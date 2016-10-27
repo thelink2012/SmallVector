@@ -89,7 +89,7 @@ private:
   // don't want it to be automatically run, so we need to represent the space as
   // something else.  Use an array of char of sufficient alignment.
   ////////////typedef llvm_vecsmall::AlignedCharArrayUnion<T> U;
-  typedef std::aligned_union<0,T> U;
+  typedef typename std::aligned_union<1, typename T>::type U;
   U FirstEl;
   // Space after 'FirstEl' is clobbered, do not add any instance vars after it.
 
