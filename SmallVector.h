@@ -342,7 +342,7 @@ template <typename T>
 class SmallVectorImpl : public SmallVectorTemplateBase<T, IsPod<T>::value> {
   typedef SmallVectorTemplateBase<T, IsPod<T>::value> SuperClass;
 
-  SmallVectorImpl(const SmallVectorImpl &) = delete;
+  SmallVectorImpl(const SmallVectorImpl&) = delete;
 
 public:
   typedef typename SuperClass::iterator iterator;
@@ -352,7 +352,8 @@ public:
 protected:
   // Default ctor - Initialize to empty.
   explicit SmallVectorImpl(unsigned N)
-      : SmallVectorTemplateBase<T, IsPod<T>::value>(N * sizeof(T)) {}
+    : SmallVectorTemplateBase<T, IsPod<T>::value>(N*sizeof(T)) {
+  }
 
 public:
   ~SmallVectorImpl() {
